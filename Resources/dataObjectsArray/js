@@ -1,0 +1,17 @@
+let students = {
+  student1: 'Mirbek',
+  student2: 'Sadyr',
+};
+
+for (let key in students) {
+  let name = students[key];
+  console.log(name + ": " + name.length + " characters");
+}
+
+
+let students = ['Mirbek', 'Sadyr' ];
+
+for (let i = 0; i < students.length; i++) {
+  let name = students[i];
+  console.log(name + ": " + name.length + " characters");
+}
