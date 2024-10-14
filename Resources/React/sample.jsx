@@ -44,3 +44,23 @@ let students = [
   
   console.log("\nUpdated Students with Extra Credit:");
   console.log(updatedStudents);
+
+
+
+
+  my-next-app/
+  │
+  ├── components/
+  │   ├── Header.js
+  │   ├── Footer.js
+  │   ├── Button.js
+  │
+  ├── pages/
+  │   ├── index.js
+  │   ├── about.js
+  │
+  ├── public/
+  ├── styles/
+  ├── package.json
+  
+  
