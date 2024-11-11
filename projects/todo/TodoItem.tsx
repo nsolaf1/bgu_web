@@ -1,40 +1,40 @@
-// components/TodoItem.tsx
-import { useState } from "react";
+import { Button } from "@/components/ui/button"
+import { Trash2, Check } from "lucide-react"
 
-type TodoItemProps = {
-  id: number;
-  text: string;
-  completed: boolean;
-  toggleComplete: (id: number) => void;
-  removeTodo: (id: number) => void;
-};
+interface TaskItemProps {
+  task: { id: number; text: string; completed: boolean }
+  toggleTask: (id: number) => void
+  deleteTask: (id: number) => void
+}
 
-export default function TodoItem({
-  id,
-  text,
-  completed,
-  toggleComplete,
-  removeTodo,
-}: TodoItemProps) {
+export const TaskItem = ({ task, toggleTask, deleteTask }: TaskItemProps) => {
   return (
-    <div className="flex justify-between items-center bg-white p-2 rounded-lg shadow mb-2">
+    <li 
+      key={task.id} 
+      className={`flex items-center justify-between p-2 rounded ${task.completed ? 'bg-green-100' : 'bg-gray-100'}`}
+    >
+      <span className={task.completed ? 'line-through text-gray-500' : 'text-gray-800'}>
+        {task.text}
+      </span>
       <div>
-        <input
-          type="checkbox"
-          checked={completed}
-          onChange={() => toggleComplete(id)}
+        <Button
+          onClick={() => toggleTask(task.id)}
           className="mr-2"
-        />
-        <span className={`${completed ? "line-through text-gray-500" : ""}`}>
-          {text}
-        </span>
+          variant="outline"
+          size="icon"
+          aria-label={task.completed ? "Mark as incomplete" : "Mark as complete"}
+        >
+          <Check className={`w-4 h-4 ${task.completed ? 'text-green-500' : 'text-gray-500'}`} />
+        </Button>
+        <Button
+          onClick={() => deleteTask(task.id)}
+          variant="outline"
+          size="icon"
+          aria-label="Delete task"
+        >
+          <Trash2 className="w-4 h-4 text-red-500" />
+        </Button>
       </div>
-      <button
-        onClick={() => removeTodo(id)}
-        className="text-red-500 hover:text-red-700"
-      >
-        Remove
-      </button>
-    </div>
-  );
+    </li>
+  )
 }
